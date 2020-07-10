@@ -1,6 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_master')
 
 @section( 'content')
+
+<nav class="breadcrumb sl-breadcrumb">
+    <a class="breadcrumb-item" href="index.html">Starlight</a>
+    <span class="breadcrumb-item active">Dashboard</span>
+</nav>
+
+<div class="sl-pagebody">
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
@@ -37,4 +46,5 @@
         </div>
     </div>
 </div>
+</div><!-- sl-pagebody -->
 @endsection

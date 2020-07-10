@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $upload_photo = $request->file('category_photo');
         $new_name =  $category_id . '.' . $upload_photo->getClientOriginalExtension();
         $new_uploade_location = base_path('public/uploads/category_photo/'. $new_name);
-        Image::make($upload_photo)->resize(300,250)->save($new_uploade_location);
+        Image::make($upload_photo)->resize(600,470)->save($new_uploade_location);
         //photo uploads end
         Category::find($category_id)->update([
             'category_photo'=> $new_name
@@ -69,7 +69,9 @@ class CategoryController extends Controller
     }
 
     function HardDeleteCategory($id){
+        $delet_photo_location = base_path('public/uploads/category_photo/').Category::onlyTrashed()->find($id)->category_photo;
         Category::onlyTrashed()->find($id)->forceDelete();
+        unlink($delet_photo_location);
         return back()->with('forcedelete_status', 'Category ForceDelete Successfully');
     }
 }

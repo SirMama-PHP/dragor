@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/','FrontendController@index')->name('index');
 
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
