@@ -33,3 +33,12 @@ Route::get('/hard_delete/category/{id}', 'CategoryController@HardDeleteCategory'
 Route::get('profile','ProfileController@profile')->name('profile');
 Route::post('profile/post','ProfileController@ProfilePost')->name('ProfilePost');
 Route::post('password/post','ProfileController@PasswordPost')->name('PasswordPost');
+
+//ProductController Routes
+Route::get('/add/product', 'ProductController@Add_Product')->name('Add_Product');
+Route::post('/add/product/post', 'ProductController@AddProductPost')->name('AddProductPost');
+Route::get('/update/category/{category_id}', 'ProductController@UpdateCategory')->name('UpdateCategory');
+Route::post('/update/category/post', 'ProductController@UpdateCategoryPost')->name('UpdateCategoryPost');
+Route::get('/delete/category/{id}', 'ProductController@DeleteCategory')->name('DeleteCategory');
+Route::get('/restore/category/{id}', 'ProductController@RestoreCategory')->name('RestoreCategory');
+Route::get('/hard_delete/category/{id}', 'ProductController@HardDeleteCategory')->name('HardDeleteCategory');

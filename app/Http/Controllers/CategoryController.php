@@ -48,10 +48,31 @@ class CategoryController extends Controller
 
     function UpdateCategory($category_id){
         $category_name = Category::find($category_id)->category_name;
-        return view('admin.category.update', compact('category_name', 'category_id'));
+        $category_photo = Category::find($category_id)->category_photo;
+        return view('admin.category.update', compact('category_name', 'category_id','category_photo'));
     }
 
     function UpdateCategoryPost(Request $request){
+        if($request->hasFile('new_category_photo')){
+            //old photo delete start
+        $delete_photo_location = base_path('public/uploads/category_photo/').Category::find($request->category_id)->category_photo;
+        unlink($delete_photo_location);
+        //old photo delete end
+
+        //new photo update start
+        $upload_photo = $request->file('new_category_photo');
+        $new_name =  $request->category_id . '.' . $upload_photo->getClientOriginalExtension();
+        $new_uploade_location = base_path('public/uploads/category_photo/'. $new_name);
+        Image::make($upload_photo)->resize(600,470)->save($new_uploade_location);
+        //new photo end
+
+        //new photo info update at bd start
+        Category::find($request->category_id)->update([
+            'category_photo'=>$new_name,
+        ]);
+        //new photo info update at bd end
+        }
+
         Category::find($request->category_id)->update([
             'category_name' => $request->category_name
         ]);
