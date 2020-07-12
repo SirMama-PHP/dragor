@@ -167,7 +167,7 @@ active
                     </div>
                     @endif
 
-                    <form action="{{url('/add/product/posts')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{url('/add/product/post')}}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">

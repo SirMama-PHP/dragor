@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,8 +13,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
 Route::get('/','FrontendController@index')->name('index');
+Route::get('/product/detiels/{Product_id}','FrontendController@ProductDetiels')->name('ProductDetiels');
 
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

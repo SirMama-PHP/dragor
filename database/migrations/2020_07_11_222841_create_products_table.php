@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->integer('product_price');
             $table->string('product_thumbnail_photo');
             $table->integer('product_quantity');
-            $table->string('product_short_description');
-            $table->string('product_long_description');
+            $table->text('product_short_description');
+            $table->text('product_long_description');
             $table->timestamps();
             $table->softDeletes();
         });

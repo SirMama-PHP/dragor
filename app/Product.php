@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use SoftDeletes;
+
+    protected $fillable =['product_thumbnail_photo'];
 }
